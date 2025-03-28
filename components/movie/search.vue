@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const query = ref('');
+const query = ref('spider-man');
 const movies = ref([]);
 const config = useRuntimeConfig();
 
@@ -7,6 +7,8 @@ async function search() {
   const { Search } = await $fetch(`http://www.omdbapi.com/?apikey=${config.public.apiKey}&s=${query.value}`);
   movies.value = Search;
 }
+
+search();
 </script>
 
 <template>

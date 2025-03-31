@@ -1,7 +1,14 @@
 <script setup lang="ts">
+const isLoggedIn = useIsLoggedIn();
+
 definePageMeta({
   layout: 'plain',
 });
+
+const login = () => {
+  isLoggedIn.value = true;
+  useRouter().push('/');
+};
 </script>
 
 <template>

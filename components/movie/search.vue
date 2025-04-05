@@ -23,9 +23,7 @@ search();
           <NuxtImg 
             :src="movie.Poster" 
             :alt="movie.Title" 
-            width="200" 
-            height="300"
-            format="webp"
+            width="300"
           />
         </NuxtLink>
       </li>

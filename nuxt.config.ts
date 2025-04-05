@@ -8,4 +8,9 @@ export default defineNuxtConfig({
       apiKey: process.env.API_KEY,
     },
   },
+  routeRules: {
+    "/spa": { ssr: false },
+    "/static": { static: true },
+    "/swr": { swr: true },
+  },
 });

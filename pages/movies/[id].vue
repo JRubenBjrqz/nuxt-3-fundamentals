@@ -2,7 +2,14 @@
 const route = useRoute();
 const config = useRuntimeConfig();
 
-const { data } = await useFetch(`http://www.omdbapi.com/?apikey=${config.public.apiKey}&i=${route.params.id}`, {
+interface MovieResponse {
+  Plot: string;
+  Title: string;
+  Poster: string;
+  Error?: string;
+}
+
+const { data } = await useFetch<MovieResponse>(`https://www.omdbapi.com/?apikey=${config.public.apiKey}&i=${route.params.id}`, {
   pick: ['Plot', 'Title', 'Poster'],
   key: `movie-${route.params.id}`,
   onResponse({request, response}) {
@@ -13,11 +20,11 @@ const { data } = await useFetch(`http://www.omdbapi.com/?apikey=${config.public.
 });
 
 useHead({
-  title: data.value.Title,
+  title: data.value?.Title || 'Movie Details',
   meta: [
-    { name: 'description', content: data.value.Plot },
-    { property: 'og:description', content: data.value.Plot },
-    { property: 'og:image', content: data.value.Poster },
+    { name: 'description', content: data.value?.Plot || '' },
+    { property: 'og:description', content: data.value?.Plot || '' },
+    { property: 'og:image', content: data.value?.Poster || '' },
     { property: 'twitter:card', content: 'summary_large_image' },
   ],
 })

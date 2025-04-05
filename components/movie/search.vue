@@ -4,7 +4,7 @@ const movies = ref([]);
 const config = useRuntimeConfig();
 
 async function search() {
-  const { Search } = await $fetch(`http://www.omdbapi.com/?apikey=${config.public.apiKey}&s=${query.value}`);
+  const { Search } = await $fetch(`https://www.omdbapi.com/?apikey=${config.public.apiKey}&s=${query.value}`);
   movies.value = Search;
 }
 

@@ -30,18 +30,18 @@ const extract = computed(() => {
 </script>
 
 <template>
-    <NuxtImg 
-        src="/gallantmon.jpg"
-        sizes="xs:100vw sm:50vw md:1860px"
-        :modifiers="{
-            ...modifiers,
-            extract: extract,
-        }"
-    />
+    <picture>
+        <source
+            media="(max-width: 650px)"
+            srcset="https://www.grindosaur.com/img/games/digimon-world-next-order/digimon/gallantmon-cm.jpg"
+        />
+        <img src="https://www.grindosaur.com/img/games/digimon-world-next-order/digimon/gallantmon-cm.jpg">
+    </picture>
+    <img src="https://www.grindosaur.com/img/games/digimon-world-next-order/digimon/gallantmon-cm.jpg">
 </template>
 
 <style scoped>
-img {
+:deep(img) {
     display: block;
     width: 100%;
 }
